@@ -21,18 +21,20 @@ const TicTacToe = () => {
   const [winner, setWinner] = useState(null);
   const [isMultiplayer, setIsMultiplayer] = useState(false);
 
-  const checkWinner = () => {
-    for (let i = 0; i < lines.length; i++) {
-      const [a, b, c] = lines[i];
-     
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        setWinner(squares[a]);
-        break;
-      }
-    }
-  };
+  
 
   useEffect(() => {
+
+    const checkWinner = () => {
+      for (let i = 0; i < lines.length; i++) {
+        const [a, b, c] = lines[i];
+       
+        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+          setWinner(squares[a]);
+          break;
+        }
+      }
+    };
     if (!isMultiplayer) {
       const isComputerTurn =
         squares.filter((square) => square !== null).length % 2 === 1;
@@ -52,7 +54,7 @@ const TicTacToe = () => {
       }
     }
     checkWinner();
-  }, [squares, winner,checkWinner, isMultiplayer]);
+  }, [squares, winner, isMultiplayer]);
 
   
 
